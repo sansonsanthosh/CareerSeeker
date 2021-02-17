@@ -1,0 +1,43 @@
+{% extends 'adm_layout.html' %}
+
+{% block title %}Current Work Profile{% endblock %}
+
+{% block content %}
+
+		<div>
+            <h2>Job Listing and Management</h2>
+            
+            <div>
+                <a href="{{ url_for('adm_add_job') }}"><button type="submit">Add Job</button></a>
+                <a href="{{ url_for('adm_bulk_upload') }}"><button type="button">Bulk Upload</button><br /><br /></a>
+                <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+                <table>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Job ID</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Posting Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for j in range(count_t) %}
+                    <tr>
+
+                            <td>{{lst[j][0]}}</td>
+                            <td>{{lst[j][1]}}</td>
+                            <td>{{lst[j][2]}}</td>
+                            <td>{{lst[j][3]}}</td>
+                            <td>{{lst[j][4]}}</td>
+                            <td><form id="edit" action="{{url_for('adm_job_edit', action='edit', item_id=lst[j][1])}}" method="POST"><button>Edit</button></form></td>
+                            <td><form id="delete" action="{{url_for('adm_job_del', action='delete', item_id=lst[j][1])}}" method="POST"><button onclick="return confirm('Do you want to delete this Job?')">Delete</button></form></td>
+
+                    </tr>
+                    {% endfor %}
+                </table><br />
+                
+                <form id="Previous" action="{{url_for('adm_job_mgmt_lst', action='previous', lst_from=lst[count_t-1][0])}}" method="POST"><button>Previous</button></form><br />
+                <form id="Next" action="{{url_for('adm_job_mgmt_lst', action='next', lst_from=lst[count_t-1][0])}}" method="POST"><button>Next</button></form>
+            </div>
+        </div>
+{% endblock %}

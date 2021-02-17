@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}Earning Index{% endblock %}
+
+{% block content %}
+<h2 style="color:white;">Earning Index!!!!</h2>
+            <div>
+            <form action="{{ url_for('usr_earn_index') }}" method="post">
+                <label>
+                    
+                Select a job title :  
+                        <select id="position" name="position">
+                            <option value="">{{position}}</option>
+                            {% for x in pos_list %}
+                                <option value="{{x}}">{{x}}</option>
+                            {% endfor %} 
+                        </select>
+			    </label>
+                <input type="submit" value="Update">
+                <a href="{{ url_for('usr_earn_index') }}"><input type="button" value="Reset"></a>
+            <br />
+
+                <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+                <br />
+			    
+			</form>
+            </div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>User Registration</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="register">
+            
+			<h1>User Registration</h1>
+			<div class="links">
+				<a href="{{ url_for('register') }}" class="active">Please fill in your details</a>
+                <a href="{{ url_for('login') }}">Login</a>
+            </div>
+            <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+			<form action="{{ url_for('register') }}" method="post" autocomplete="off">
+
+                <label for="fstname">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="fstname" placeholder="First Name" value="{{fstname}}" id="fstname" required />
+
+                <label for="lstname">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="lstname" placeholder="Last Name" value="{{lstname}}" id="lstname" required />
+				
+                <label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+				<input type="email" name="email" placeholder="Email *" value="{{user}}" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Enter the mail in proper format" required />
+
+		        <label for="Mobile">
+					<i class="fas fa-mobile"></i>
+				</label>
+                <input type="number" name="Mobile" placeholder="Mobile Number" value="{{mob}}" id="Mobile" />
+
+                <label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+                <input type="password" name="password" placeholder="Password *" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="The password must contain a minimum of 8 characters consisting of at least one number, and one uppercase and lowercase letter" required />
+
+				<label for="password-confirm">
+					<i class="fas fa-lock"></i>
+				</label>
+                <input type="password" name="password-confirm" placeholder="Confirm Password *" id="password-confirm" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="The password must contain a minimum of 8 characters consisting of at least one number, and one uppercase and lowercase letter" required />
+	
+	            <label style="color:black;background-color:white; display: flex;justify-content: center;align-items: center;width: 600px;height: 20px;">
+                 <span class="checkbox">
+                 <input type="checkbox" name="agree"  id="agree">
+                 <input type="hidden" name="agree" value="N" id="agree">
+                 <span class="checkbox-value" aria-hidden="true"></span>
+                 </span>
+                      I hereby agree to the &nbsp; <a href="#"> terms and conditions.</a>
+                </label>
+
+				<input type="submit" value="Register">
+			</form>
+            <c style="text-align:end;">* required fields</c>
+		</div>
+	</body>
+</html>

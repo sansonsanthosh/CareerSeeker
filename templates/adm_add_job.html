@@ -1,0 +1,94 @@
+{% extends 'adm_layout.html' %}
+
+{% block title %}Current Work Profile{% endblock %}
+
+{% block content %}
+
+		<div class="content">
+            <h2>Add Job</h2>
+            
+            <div>
+            <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+			<form action="{{ url_for('adm_add_job') }}" method="post" autocomplete="off">
+
+                <label>
+				    Job ID : <input type="text" name="job_id" required/>	
+				</label>
+				
+                <br />				
+                <label>
+				    Job Title : <input type="text" name="job_tit" required/>	
+				</label>
+				
+                <br />
+                <label>
+					Company Name : <input type="text" name="job_comp" required/>
+				</label>
+				
+                <br />
+                <label>
+					Experience Required : 
+                        <select id="job_exp" name="job_exp">
+                            <option value="Fresher">Fresher</option>
+                            <option value="0-1">0-1</option>
+                            <option value="1-3">1-3</option>
+                            <option value="3-5">3-5</option>
+                            <option value="5+">5+</option>
+                        </select>
+				</label>
+				<br />
+                <label>
+					Salary : <input type="text" name="job_sal" />
+				</label>
+				<br />
+                <label>
+					Location : <input type="text" name="job_loc" required/>
+				</label>
+				<br />
+                <label>
+					Job Type : <input type="text" name="job_type" required/>
+				</label>
+				<br />
+                <label>
+					Job Notification Date : <input type="date" name="job_not_date" required/>
+				</label>
+				<br />
+                <label>
+					Job Application Link : <input type="text" name="job_appl_lnk" required/>
+				</label>
+				<br />
+                <label>
+					Career Level : 
+                        <select id="job_car_lvl" name="job_car_lvl">
+                            <option value="Entry">Entry</option>
+                            <option value="Mid">Mid</option>
+                            <option value="Senior Mid">Senior Mid</option>
+                            <option value="Management">Management</option>
+                            <option value="Senior Management">Senior Management</option>
+                        </select>
+				</label>
+				<br />
+                <label>
+					Qualification Required : 
+                        <select id="job_qual" name="job_qual">
+                            <option value="School">School</option>
+                            <option value="Degree">Degree</option>
+                            <option value="Post-graduate">Post-graduate</option>
+                            <option value="Doctorate">Doctorate</option>
+                        </select>
+				</label>
+				<br />
+				<br />
+                <label for id="job_desc">
+					 Job Description : 
+				<textarea id="job_desc" name="job_desc" rows="4" cols="50">
+                </textarea>
+                </label>
+                <br />
+    			<input type="submit" value="Save">
+                <input type="reset" value="Cancel">
+			</form>
+		</div>
+            </div>
+        
+{% endblock %}

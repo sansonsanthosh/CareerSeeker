@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %}User Job Search{% endblock %}
+
+{% block content %}
+<h2 style="color:white;">Welcome {{ account[1] }} {{ account [2]}} !!!!</h2>
+			
+            <div class="links">
+				<a href="#" class="active"><button>Matching Jobs</button></a>
+				<a style="text-align:right;" href="{{ url_for('usr_job_search_sugg') }}"><button>Suggested Jobs</button></a>
+			</div>
+            <div>
+            <form action="{{ url_for('usr_job_search') }}" method="post">
+                <label>
+                    
+                City of Choice :  
+                        <select id="city" name="city">
+                            <option value="">{{city}}</option>
+                            {% for x in city_list %}
+                                <option value="{{x}}">{{x}}</option>
+                            {% endfor %} 
+                        </select>
+			    </label>
+                <input type="submit" value="Update">
+                <a href="{{ url_for('usr_job_search') }}"><input type="button" value="Reset"></a>
+            <br />
+
+                <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+                <br />
+			    
+			</form>
+
+                <p>Matching Jobs (Jobs that matches your current profile):</p>
+                <table>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Job ID</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Required Experience</th>
+                        <th>Expected Salary</th>
+                        <th>Job Description</th>
+                        <th>Place of Work</th>
+                        <th>Application Link</th>
+                    </tr>
+                    {% for j in range(match_count) %}
+                    <tr>
+
+                            <td>{{lst[j][0]}}</td>
+                            <td>{{lst[j][1]}}</td>
+                            <td>{{lst[j][2]}}</td>
+                            <td>{{lst[j][3]}}</td>
+                            <td>{{lst[j][4]}}</td>
+                            <td>{{lst[j][5]}}</td>
+                            <td>{{lst[j][6]}}</td>
+                            <td>{{lst[j][7]}}</td>
+                            <td><a target="_blank" href={{lst[j][8]}}><button>Apply</button></a></td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+{% endblock %}

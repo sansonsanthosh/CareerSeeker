@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css" rel="stylesheet">
+        <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.0.min.css" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>       
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>{{comp}}</h1>
+                <a href="{{ url_for('profile') }}"><i class="fas fa-user"></i>Personal Details</a>
+                <a href="{{ url_for('usr_cur_work_prof') }}"><i class="fas fa-building"></i>Current Work Profile</a>
+                <a href="{{ url_for('usr_job_search') }}"><i class="fas fa-search"></i>Job Recommendation and Search</a>
+                <a href="{{ url_for('usr_sal_insights') }}"><i class="fa fa-credit-card"></i>Salary Insights</a>
+                <a href="{{ url_for('usr_earn_index') }}"><i class="fas fa-money-check"></i>Earning Index</a>
+                <a href="{{ url_for('usr_chg_pwd') }}"><i class="fas fa-key"></i>Change Password</a>
+				<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>

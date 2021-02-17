@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}Current Work Profile{% endblock %}
+
+{% block content %}
+<h2 style="color:white;">Welcome {{ account[1] }} {{ account [2]}} !!!!</h2>
+
+    <div>
+    <p>Matching Jobs (Jobs that matches your current profile):</p>
+    <table>
+        <tr>
+            <td>Educational Qualification :</td>
+            <td>{{ account[7] }}</td>
+        </tr>
+        <tr>
+            <td>Consolidated Work Experience :</td>
+            <td>{{ account[8] }}</td>
+        </tr>
+        <tr>
+            <td>Previous Work Position :</td>
+            <td>{{ account[9] }}</td>
+        </tr>
+        <tr>
+            <td>Previous Career Level :</td>
+            <td>{{ account[10] }}</td>
+        </tr>
+        <tr>
+            <td>Last Work Tenure (in years) :</td>
+            <td>{{ account[11] }}</td>
+        </tr>
+        <tr>
+            <td>Expected Position :</td>
+            <td>{{ account[12] }}</td>
+        </tr>
+        <tr>
+            <td>Expected Career Level :</td>
+            <td>{{ account[13] }}</td>
+        </tr>
+
+    </table>
+        <div style="text-align:right;">
+          <a href="{{url_for('usr_cur_work_prof_upd')}}"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Edit
+        </button></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'adm_layout.html' %}
+
+{% block title %}Change Password{% endblock %}
+
+{% block content %}
+<h1 style="color:white;"><b>{{account[2]}}  {{account[3]}}, Change your Password</b></h1>
+<div>
+
+        <form action="{{ url_for('adm_chg_pwd') }}" method="post">
+            
+			<label>
+                Enter your Current Password : <input type="password" name="curr_pwd" />
+			</label>
+            <br />
+			<label>
+                Enter your New Password : <input type="password" name="new_pwd_1" />
+			</label>
+            <br />
+			<label>
+                Renter your New Password : <input type="password" name="new_pwd_2" />
+            </label>
+            <br />
+            <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>        
+            <input type="submit" value="Submit">        
+            
+				
+		</form>
+</div>
+{% endblock %}

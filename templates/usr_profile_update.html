@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile Update{% endblock %}
+
+{% block content %}
+<div><b>{{account[1]}}  {{account[2]}}, Update your profile here...</b></div>
+<div>
+
+        <form action="{{ url_for('usr_profile_update') }}" method="post">
+            
+			<label>
+                Mobile Number : <input type="number" name="mobile" placeholder={{account[5]}} />
+			</label>
+            <br />
+            <label>
+                First Name : <input type="text" name="fstname" placeholder={{account[1]}} />
+            </label>
+ 			<br />	
+			<label>
+                Last Name : <input type="text" name="lstname" placeholder={{account[2]}} />
+            </label>
+            <br />
+
+            <br />
+			<div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+            <br />
+			<input type="submit" value="Update">
+            <a href="{{ url_for('profile') }}"><input type="button" value="Back"></a>
+			</form>
+</div>
+{% endblock %}

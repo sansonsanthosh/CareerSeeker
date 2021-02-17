@@ -1,0 +1,178 @@
+{% extends 'layout.html' %}
+
+{% block title %}Salary Insights{% endblock %}
+
+{% block content %}
+<h2 style="color:white;">Salary Insights!!!!</h2>
+                <div>
+            <form action="{{ url_for('usr_sal_insights') }}" method="post"><br />
+                <label>
+                    
+                <h2>City of Choice :  </h2>
+                        <select id="city" name="city">
+                            <option value="{{city}}">{{city}}</option>
+                            {% for x in city_list %}
+                                <option value="{{x}}">{{x}}</option>
+                            {% endfor %} 
+                        </select>
+			    </label>
+                <input type="submit" value="Update">
+                <a href="{{ url_for('usr_sal_insights') }}"><input type="button" value="Reset"></a>
+            <br />
+
+                <div class="msg" style="text-align:center;color:red;font-weight:bolder;font-size:125%;">{{ msg }}</div>
+		    
+			</form>
+                <br />
+                <h2> Preferred Position: {{account[12]}}</h2>
+                <table>
+                    <tr>
+                        <td>Average Basic Pay</td>
+                        <td>Maximum Basic Pay</td>
+                        <td>Minimum Basic Pay</td>
+                    </tr>
+                    <tr>
+                        <td>{{avg_pay}}</td>
+                        <td>{{max_pay}}</td>
+                        <td>{{min_pay}}</td>
+                    </tr>
+                </table>
+                    <br />
+                
+                <h4>Maximum Pay job details</h4>
+                <table>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Job ID</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Required Experience</th>
+                        <th>Expected Salary</th>
+                        <th>Job Description</th>
+                        <th>Place of Work</th>
+                        <th>Application Link</th>
+                    </tr>
+                    {% for j in range(match_count_max_pay) %}
+                    <tr>
+
+                            <td>{{lst_max_pay_job[j][0]}}</td>
+                            <td>{{lst_max_pay_job[j][1]}}</td>
+                            <td>{{lst_max_pay_job[j][2]}}</td>
+                            <td>{{lst_max_pay_job[j][3]}}</td>
+                            <td>{{lst_max_pay_job[j][4]}}</td>
+                            <td>{{lst_max_pay_job[j][5]}}</td>
+                            <td>{{lst_max_pay_job[j][6]}}</td>
+                            <td>{{lst_max_pay_job[j][7]}}</td>
+                            <td><a target="_blank" href={{lst_max_pay_job[j][8]}}><button>Apply</button></a></td>
+
+                    </tr>
+                    {% endfor %}
+                </table><br />
+
+                <h4>Minimum Pay job details</h4>
+                <table>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Job ID</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Required Experience</th>
+                        <th>Expected Salary</th>
+                        <th>Job Description</th>
+                        <th>Place of Work</th>
+                        <th>Application Link</th>
+                    </tr>
+                    {% for j in range(match_count_min_pay) %}
+                    <tr>
+
+                            <td>{{lst_min_pay_job[j][0]}}</td>
+                            <td>{{lst_min_pay_job[j][1]}}</td>
+                            <td>{{lst_min_pay_job[j][2]}}</td>
+                            <td>{{lst_min_pay_job[j][3]}}</td>
+                            <td>{{lst_min_pay_job[j][4]}}</td>
+                            <td>{{lst_min_pay_job[j][5]}}</td>
+                            <td>{{lst_min_pay_job[j][6]}}</td>
+                            <td>{{lst_min_pay_job[j][7]}}</td>
+                            <td><a target="_blank" href={{lst_min_pay_job[j][8]}}><button>Apply</button></a></td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+                    <br /><hr />
+                <h2> Preferred Career Level: {{account[13]}}</h2>
+                <table>
+                    <tr>
+                        <td>Average Basic Pay</td>
+                        <td>Maximum Basic Pay</td>
+                        <td>Minimum Basic Pay</td>
+                    </tr>
+                    <tr>
+                        <td>{{avg_pay_car_lvl}}</td>
+                        <td>{{max_pay_car_lvl}}</td>
+                        <td>{{min_pay_car_lvl}}</td>
+                    </tr>
+                </table>
+                    <br />
+
+
+                            <h4>Maximum Pay job details</h4>
+                <table>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Job ID</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Required Experience</th>
+                        <th>Expected Salary</th>
+                        <th>Job Description</th>
+                        <th>Place of Work</th>
+                        <th>Application Link</th>
+                    </tr>
+                    {% for j in range(match_count_max_pay_car_lvl) %}
+                    <tr>
+
+                            <td>{{lst_max_pay_job_car_lvl[j][0]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][1]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][2]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][3]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][4]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][5]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][6]}}</td>
+                            <td>{{lst_max_pay_job_car_lvl[j][7]}}</td>
+                            <td><a target="_blank" href={{lst_max_pay_job_car_lvl[j][8]}}><button>Apply</button></a></td>
+
+                    </tr>
+                    {% endfor %}
+                </table><br />
+
+
+                            <h4>Minimum Pay job details</h4>
+                <table>
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Job ID</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Required Experience</th>
+                        <th>Expected Salary</th>
+                        <th>Job Description</th>
+                        <th>Place of Work</th>
+                        <th>Application Link</th>
+                    </tr>
+                    {% for j in range(match_count_min_pay_car_lvl) %}
+                    <tr>
+
+                            <td>{{lst_min_pay_job_car_lvl[j][0]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][1]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][2]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][3]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][4]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][5]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][6]}}</td>
+                            <td>{{lst_min_pay_job_car_lvl[j][7]}}</td>
+                            <td><a target="_blank" href={{lst_min_pay_job_car_lvl[j][8]}}><button>Apply</button></a></td>
+
+                    </tr>
+                    {% endfor %}                </table>
+            </div>
+{% endblock %}
